@@ -22,14 +22,14 @@
 ## 풀이 과정
 
 1. **입력 받기**
-    - `Scanner`를 사용하여 다섯 개의 자연수를 입력받아 배열에 저장합니다.
+    - `Scanner`를 사용하여 다섯 개의 자연수를 입력받아 배열에 저장하면서 동시에 합을 계산합니다.
 
 2. **정렬하여 중앙값 찾기**
     - `Arrays.sort()`를 사용하여 배열을 오름차순으로 정렬합니다.
-    - 정렬된 배열에서 세 번째 요소 (`arr[2]`)가 중앙값입니다.
+    - 정렬된 배열의 중간에 위치한 값(`arr[2]`)이 중앙값이 됩니다.
 
 3. **평균 계산**
-    - 배열의 모든 요소를 합산하고, 배열의 길이(5)로 나누어 평균을 구합니다. 이때 평균은 자연수로 출력됩니다.
+    - 배열의 모든 요소를 합산한 `sum`을 5로 나누어 평균을 구합니다. 이 평균은 자연수로 출력됩니다.
 
 4. **출력**
     - 평균과 중앙값을 각각 출력합니다.
@@ -46,31 +46,28 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        // 합을 저장할 변수
-        int sum = 0;
-
-        // 다섯 개의 자연수를 저장할 배열
+        int sum = 0;  // 수들의 합
+        int mid = 0;  // 중앙값
         int[] arr = new int[5];
 
-        // 배열에 입력값 저장
-        for (int i = 0; i < arr.length; i++) {
+        // 다섯 개의 자연수를 입력받아 배열에 저장하고 합 계산
+        for (int i = 0; i < 5; i++) {
             arr[i] = sc.nextInt();
-        }
-
-        // 배열 정렬하여 중앙값 구하기 준비
-        Arrays.sort(arr);
-
-        // 전체 합 계산
-        for (int i = 0; i < arr.length; i++) {
             sum += arr[i];
         }
 
-        // 평균 계산 (자연수)
-        int avg = sum / arr.length;
+        // 배열 오름차순으로 정렬
+        Arrays.sort(arr);
+
+        // 평균 구하기
+        int avg = sum / 5;
 
         // 중앙값은 정렬된 배열의 세 번째 요소
-        System.out.println("avg :: " + avg);
-        System.out.println("center :: " + arr[arr.length / 2]);
+        mid = arr[2];
+
+        // 평균과 중앙값 출력
+        System.out.print(avg + "\n" + mid);
+
         sc.close();
     }
 }
